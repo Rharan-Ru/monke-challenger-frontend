@@ -1,0 +1,67 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100 flex-col m-3">
+    <h1 class="text-4xl font-bold text-center mb-6 text-gray-700">Register</h1>
+    <p class="text-gray-600 text-center mb-6 font-bold">
+        Create an account to start using the app
+    </p>
+  
+    <app-feedback-message [feedbackErrors]="feedbackErrors" [feedbackMessages]="feedbackMessages"></app-feedback-message>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-lg w-full">
+      <div class="mb-5">
+        <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+        <input 
+          id="email" 
+          formControlName="email" 
+          type="email" 
+          class="w-full mt-1 p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500" 
+        />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-xs mt-1">
+          <p *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</p>
+          <p *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</p>
+        </div>
+      </div>
+  
+      <div class="mb-5">
+        <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+        <div class="relative flex flex-row align-middle items-center justify-center">
+            <input 
+                id="password" 
+                formControlName="password" 
+                type="{{ showPassword ? 'text' : 'password' }}"
+                class="w-full mt-1 p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500" 
+            />
+            <button 
+                type="button" 
+                (click)="togglePassword()"
+                class="text-gray-600 p-1 m-0 ml-1"
+            >
+                <span class="material-icons m-0 p-0">{{ showPassword ? "visibility" : "visibility_off"}}</span>
+            </button>
+        </div>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-xs mt-1">
+            <p *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</p>
+            <p *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</p>
+        </div>
+      </div>
+  
+      <button 
+        type="submit" 
+        [disabled]="loginForm.invalid || loading" 
+        class="w-full py-3 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-blue-300"
+      >
+        <ng-container *ngIf="loading; else loginText">
+          <app-loading [isLoading]="loading" loadingText="Registering..."></app-loading>
+        </ng-container>
+        <ng-template #loginText>Register</ng-template>
+      </button>
+  
+      <div class="mt-4 text-center">
+        Alrealy have an account? 
+        <a routerLink="/login" class="text-blue-500 hover:underline cursor-pointer font-bold">
+            Login here
+        </a>
+      </div>
+  
+    </form>
+</div>
+  
