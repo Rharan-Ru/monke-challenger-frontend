@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'monke-challenger-backend-production.up.railway.app',
+    apiUrl: 'https://monke-challenger-backend-production.up.railway.app',
 };
   
