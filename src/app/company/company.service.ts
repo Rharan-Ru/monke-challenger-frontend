@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { InterfaceCompany } from './interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,20 +20,21 @@ export class CompanyService {
     throw error;
   }
 
-  async getCompanies(): Promise<any> {
+  async getCompanies(): Promise<InterfaceCompany[] | undefined> {
     try {
       const response = await firstValueFrom(this.http.get(`${this.apiUrl}/companies`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       }));
-      return response;
+      return (response as InterfaceCompany[]);
     } catch (error: any) {
       await this.handleHttpError(error);
+      throw error;
     }
   }
 
-  async createCompany(company: any): Promise<any> {
+  async createCompany(company: InterfaceCompany): Promise<any> {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}/companies`, company, {
         headers: {
@@ -45,7 +47,7 @@ export class CompanyService {
     }
   }
 
-  async updateCompany(company: any): Promise<any> {
+  async updateCompany(company: InterfaceCompany): Promise<any> {
     try {
       const response = await firstValueFrom(this.http.patch(`${this.apiUrl}/companies/${company.id}`, {
         email: company.email,
@@ -62,7 +64,7 @@ export class CompanyService {
     }
   }
 
-  async deleteCompany(company: any): Promise<any> {
+  async deleteCompany(company: InterfaceCompany): Promise<any> {
     try {
       const response = await firstValueFrom(this.http.delete(`${this.apiUrl}/companies/${company.id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

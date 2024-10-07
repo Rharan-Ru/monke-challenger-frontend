@@ -4,6 +4,7 @@ import { CompanyModalComponent } from "../company-modal/company-modal.component"
 import { CommonModule } from '@angular/common';
 import { ConfirmationModalComponent } from "../../confirmation-modal/confirmation-modal.component";
 import { CompanyDetailComponent } from "../company-detail/company-detail.component";
+import { InterfaceCompany } from '../interface';
 
 @Component({
   selector: 'app-company',
@@ -17,7 +18,7 @@ export class CompanyComponent implements OnInit {
   loading = false;
   feedbackErrors: string[] = [];
   feedbackMessages: string[] = [];
-  companies: any[] = [];
+  companies: InterfaceCompany[] | undefined = [];
   companyDetails: any = {};
   openEditModal = false;
   openDeleteModal = false;
@@ -35,28 +36,28 @@ export class CompanyComponent implements OnInit {
     await this.getCompanies();
   }
 
-  async createCompany(company: any) {
+  async createCompany(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
     await this.companyService.createCompany(company);
     await this.getCompanies();
   }
 
-  async updateCompany(company: any) {
+  async updateCompany(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
     await this.companyService.updateCompany(company);
     await this.getCompanies();
   }
 
-  async deleteCompany(company: any) {
+  async deleteCompany(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
     await this.companyService.deleteCompany(company);
     await this.getCompanies();
   }
 
-  async onEdit(company: any) {
+  async onEdit(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
     try {
@@ -74,12 +75,12 @@ export class CompanyComponent implements OnInit {
     }
   }
 
-  async onDelete(company: any) {-
+  async onDelete(company: InterfaceCompany) {-
     await this.deleteCompany(company);
     this.closeModals();
   }
 
-  async onCreate(company: any) {
+  async onCreate(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
     try {
@@ -97,7 +98,7 @@ export class CompanyComponent implements OnInit {
     }
   }
 
-  async showDetails(company: any) {
+  async showDetails(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
 
@@ -105,7 +106,7 @@ export class CompanyComponent implements OnInit {
     this.openDetailsModal = true;
   }
 
-  async showEdit(company: any) {
+  async showEdit(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
 
@@ -113,7 +114,7 @@ export class CompanyComponent implements OnInit {
     this.openEditModal = true;
   }
 
-  async showDelete(company: any) {
+  async showDelete(company: InterfaceCompany) {
     this.feedbackErrors = [];
     this.feedbackMessages = [];
 
