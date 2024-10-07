@@ -1,9 +1,14 @@
 <div class="min-h-screen p-5 flex justify-center">
-    <div class="w-full max-w-4xl bg-blue-300 p-3 rounded-md">
+    <div class="w-full max-w-4xl p-3 rounded-md">
       <h1 class="text-3xl font-bold mb-5 text-gray-700 text-center">Companies</h1>
-        <div class="flex justify-end mb-5">
-            <button (click)="showCreate()" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">Create Company</button>
-        </div>
+      <div class="flex justify-between mb-5">
+          <div class="justify-start inline-block">
+          <button (click)="logout()" class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">Logout</button>
+          </div>
+          <div class="justify-end inline-block">
+          <button (click)="showCreate()" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">Create Company</button>
+          </div>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @for (company of companies; track company.id) {
             <div class="bg-blue-100 rounded-lg shadow-slate-700 p-5 hover:bg-blue-200 transition-all">

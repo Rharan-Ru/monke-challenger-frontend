@@ -135,5 +135,8 @@ export class CompanyComponent implements OnInit {
     this.openCreateModal = false;
   }
 
-
+  logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  }
 }
