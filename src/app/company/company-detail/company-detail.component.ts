@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-company-detail',
@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './company-detail.component.css'
 })
 export class CompanyDetailComponent {
+  @Input() companyData: any = {};
+  @Input() openModal = false;
+  @Output() closeModal = new EventEmitter<void>();
 
+  onClose() {
+    this.closeModal.emit();
+  }
 }

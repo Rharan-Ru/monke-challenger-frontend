@@ -3,11 +3,12 @@ import { CompanyService } from '../company.service';
 import { CompanyModalComponent } from "../company-modal/company-modal.component";
 import { CommonModule } from '@angular/common';
 import { ConfirmationModalComponent } from "../../confirmation-modal/confirmation-modal.component";
+import { CompanyDetailComponent } from "../company-detail/company-detail.component";
 
 @Component({
   selector: 'app-company',
   standalone: true,
-  imports: [CommonModule, CompanyModalComponent, ConfirmationModalComponent],
+  imports: [CommonModule, CompanyModalComponent, ConfirmationModalComponent, CompanyDetailComponent],
   templateUrl: './company.component.html',
   styleUrl: './company.component.css'
 })

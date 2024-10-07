@@ -1,1 +1,50 @@
-<p>company-detail works!</p>
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold">Company Details</h2>
+        <button (click)="onClose()" class="text-gray-500 hover:text-gray-700">&times;</button>
+      </div>
+        
+      <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <p class="mt-1 block w-full p-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm">
+            {{ companyData?.email }}
+          </p>
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Company Name</label>
+          <p class="mt-1 block w-full p-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm">
+            {{ companyData?.name }}
+          </p>
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Address</label>
+          <p class="mt-1 block w-full p-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm">
+            {{ companyData?.address }}
+          </p>
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Phone</label>
+          <p class="mt-1 block w-full p-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm">
+            {{ companyData?.phone }}
+          </p>
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">CNPJ</label>
+          <p class="mt-1 block w-full p-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm">
+            {{ companyData?.CNPJ }}
+          </p>
+        </div>
+  
+        <div class="flex justify-end space-x-3">
+          <button type="button" (click)="onClose()" class="bg-gray-300 hover:bg-gray-400 text-black py-3 px-4 rounded-md">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
